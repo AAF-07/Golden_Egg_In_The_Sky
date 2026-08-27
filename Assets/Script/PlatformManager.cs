@@ -6,6 +6,7 @@ public class PlatformManager : MonoBehaviour
 {
     public float jumpforce = 10f;
     public bool platformstay = true;
+    public float speed = 1f;
 
     public void OntriggerEnter2D(Collider2D collision)
     {
@@ -41,11 +42,6 @@ public class PlatformManager : MonoBehaviour
     {
         yield return new WaitForSeconds(v);
         Destroy(gameObject);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
