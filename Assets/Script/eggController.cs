@@ -6,6 +6,7 @@ public class eggController : MonoBehaviour
 {
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        FindAnyObjectByType<ScoreManager>().AddScore(10);
         Destroy(gameObject);
         Debug.Log("player hit egg");
     }
