@@ -6,32 +6,44 @@ public class PlatformSpawner : MonoBehaviour
 {
     public GameObject[] platformPrefab;
     public int platformcount = 1000;
-    // Start is called before the first frame update
+    public float Xdistance = 2f;
+    public float minPosX = -3.5f;
+    public float maxPosX = 2.5f;
+
     void Start()
     {
-        Vector3 spawnPosition = new Vector3();
+        Vector3 spawnPosition = Vector3.zero;
+        float lastPosX = 0f;
+
         for (int i = 0; i < platformcount; i++)
         {
-            GameObject PlatformToSpawn;
+            GameObject platformToSpawn;
 
             if (Random.value < 0.7f)
             {
-                PlatformToSpawn = platformPrefab[Random.Range(0, 2)];
+                platformToSpawn = platformPrefab[Random.Range(0, 2)];
             }
             else
             {
-                PlatformToSpawn = platformPrefab[Random.Range(2, 4)];
+                platformToSpawn = platformPrefab[Random.Range(2, 4)];
             }
 
+    
             spawnPosition.y += 2f;
-            spawnPosition.x = Random.Range(-4f, 5f);
-            Instantiate(PlatformToSpawn, spawnPosition, Quaternion.identity);
+
+            float newPosX;
+
+            do
+            {
+                newPosX = Random.Range(minPosX, maxPosX);
+            }
+            while (Mathf.Abs(newPosX - lastPosX) < Xdistance);
+
+            spawnPosition.x = newPosX;
+
+            lastPosX = newPosX;
+
+            Instantiate( platformToSpawn, spawnPosition, Quaternion.identity);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
