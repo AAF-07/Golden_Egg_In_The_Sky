@@ -475,6 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 176190215}
   - component: {fileID: 176190214}
+  - component: {fileID: 176190216}
   m_Layer: 0
   m_Name: bg
   m_TagString: Untagged
@@ -543,12 +544,27 @@ Transform:
   m_GameObject: {fileID: 176190213}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24, y: -0.01, z: -0.4476562}
+  m_LocalPosition: {x: -0.19, y: 0.09, z: -0.4476562}
   m_LocalScale: {x: 3.5757418, y: 3.5757418, z: 3.5757418}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &176190216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176190213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c64c7cf5af525d478a122c55914eb18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bg: {fileID: 5565730399537985564, guid: 23287e5c93520444d92205fafef15940, type: 3}
+  loop: 10
+  heightbg: 10
 --- !u!1 &469191271
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +654,7 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2128,6 +2144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseui: {fileID: 1404456900}
+  pauseui: {fileID: 0}
 --- !u!4 &1918706179
 Transform:
   m_ObjectHideFlags: 0
