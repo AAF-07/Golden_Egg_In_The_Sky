@@ -28,6 +28,11 @@ public class ObstacleSpawn : MonoBehaviour
         {
             camerafollow = Camera.main != null ? Camera.main.transform : null;
         }
+
+        if (scoreManager == null)
+        {
+            scoreManager = FindObjectOfType<ScoreManager>();
+        }
         StartCoroutine(SpawnRoutine());
     }
 
@@ -86,18 +91,27 @@ public class ObstacleSpawn : MonoBehaviour
 
     }
 
-    void OntriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (scoreManager != null)
-            {
-                Debug.Log("ada score");
-                scoreManager.ShowFinalScore();
-            }
-            GameManager.Instance.GameOver();
-            Destroy(gameObject);
-        }
-    }
+    // void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Player")
+    //     {
+    //         if (scoreManager == null)
+    //         {
+    //             scoreManager = FindObjectOfType<ScoreManager>();
+    //         }
+            
+    //         if (scoreManager != null)
+    //         {
+    //             Debug.Log("ada score");
+    //             scoreManager.ShowFinalScore();
+    //         } 
+    //         else
+    //         {
+    //             Debug.Log("Ga Kedetect");
+    //         }
+    //         GameManager.Instance.GameOver();
+    //         Destroy(gameObject);
+    //     }
+    // }
 
 }
