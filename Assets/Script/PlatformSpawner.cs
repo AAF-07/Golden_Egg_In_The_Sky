@@ -6,9 +6,9 @@ public class PlatformSpawner : MonoBehaviour
 {
     public GameObject[] platformPrefab;
     public int platformcount = 1000;
-    public float Xdistance = 2f;
+    public float Xdistance = 3.5f;
     public float minPosX = -3.5f;
-    public float maxPosX = 2.5f;
+    public float maxPosX = 3.5f;
 
     void Start()
     {
@@ -32,7 +32,6 @@ public class PlatformSpawner : MonoBehaviour
             spawnPosition.y += 2f;
 
             float newPosX;
-
             do
             {
                 newPosX = Random.Range(minPosX, maxPosX);
@@ -40,7 +39,6 @@ public class PlatformSpawner : MonoBehaviour
             while (Mathf.Abs(newPosX - lastPosX) < Xdistance);
 
             spawnPosition.x = newPosX;
-
             lastPosX = newPosX;
 
             Instantiate( platformToSpawn, spawnPosition, Quaternion.identity);
