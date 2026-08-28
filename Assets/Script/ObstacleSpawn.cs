@@ -28,7 +28,7 @@ public class ObstacleSpawn : MonoBehaviour
         {
             camerafollow = Camera.main != null ? Camera.main.transform : null;
         }
-        StartCoroutine(SpawnObstacle());
+        StartCoroutine(SpawnRoutine());
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class ObstacleSpawn : MonoBehaviour
         
     }
 
-    IEnumerator SpawnObstacle()
+    IEnumerator SpawnRoutine()
     {
         while (true)
         {
@@ -48,7 +48,51 @@ public class ObstacleSpawn : MonoBehaviour
 
     public void SpawnObstacle()
     {
-        
+        float halfwidth = cam.orthographicSize * cam.aspect;
+        float randomx = Random.Range(cam.transform.position.x - halfwidth, cam.transform.position.x + halfwidth);
+        StartCoroutine(SpawnWarning(randomx));
+    }
+
+    IEnumerator SpawnWarning(float x)
+    {
+        float z = warningPrefab != null ? warningPrefab.transform.position.z : 0f;
+        if (obstaclePrefab != null)
+        {
+            z = obstaclePrefab.transform.position.z;
+        }
+
+        float camz = Mathf.Abs(cam.transform.position.z);
+        Vector3 topworld = cam.ViewportToWorldPoint(new Vector3(0.5f, 1f, camz));
+        float topy = topworld.y;
+
+        Vector3 warningpos = new Vector3(x, topy - warningoffsety, z);
+        GameObject warning = Instantiate(warningPrefab, warningpos, Quaternion.identity);
+
+        float t = 0f;
+        while (t < warningTime)
+        {
+            float loopTopy = cam.ViewportToWorldPoint(new Vector3(0.5f, 1f, camz)).y;
+            warning.transform.position = new Vector3(x, loopTopy - warningoffsety, warning.transform.position.z);
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(warning);
+
+        float kacangY = cam.ViewportToWorldPoint(new Vector3(0.5f, 1f, camz)).y - kacangoffsety;
+        Vector3 kacangpos = new Vector3(x, kacangY + kacangoffsety, z);
+        Instantiate(obstaclePrefab, kacangpos, Quaternion.identity); 
+
+    }
+
+    void OntriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.Instance.GameOver();
+            Destroy(gameObject);
+        }
     }
 
 }

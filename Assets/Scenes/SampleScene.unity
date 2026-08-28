@@ -495,6 +495,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 7784228387000828265, guid: 0ad9d4a5b3517a441a2e2e824beffb8f, type: 3}
+  warningPrefab: {fileID: 6965088205533939657, guid: 1c2420656548b0349abf5c13f5a7b432, type: 3}
+  loseui: {fileID: 1404456900}
+  spawnInterval: 3
+  warningTime: 1.5
+  warningoffsety: 1
+  kacangoffsety: 3
+  camerafollow: {fileID: 519420032}
 --- !u!4 &469191273
 Transform:
   m_ObjectHideFlags: 0
@@ -781,7 +788,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseui: {fileID: 1404456900}
-  gameover: 0
 --- !u!4 &1059565310
 Transform:
   m_ObjectHideFlags: 0
@@ -978,7 +984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1404456901
 MonoBehaviour:
   m_ObjectHideFlags: 0
