@@ -5,6 +5,7 @@ using UnityEngine;
 public class voidd : MonoBehaviour
 {
     public GameObject loseui;
+    public ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,10 @@ public class voidd : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (scoreManager != null)
+            {
+                scoreManager.ShowFinalScore();
+            }
             GameManager.Instance.GameOver();
         }
     }
