@@ -17,7 +17,7 @@ public class ObstacleSpawn : MonoBehaviour
     public Transform camerafollow;
 
     private Camera cam;
-
+    public ScoreManager scoreManager;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +90,11 @@ public class ObstacleSpawn : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (scoreManager != null)
+            {
+                Debug.Log("ada score");
+                scoreManager.ShowFinalScore();
+            }
             GameManager.Instance.GameOver();
             Destroy(gameObject);
         }

@@ -24,6 +24,7 @@ public class voidd : MonoBehaviour
         {
             if (scoreManager != null)
             {
+                Debug.Log("ada score");
                 scoreManager.ShowFinalScore();
             }
             GameManager.Instance.GameOver();
