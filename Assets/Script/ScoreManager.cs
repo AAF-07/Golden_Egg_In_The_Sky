@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
+    public TMP_Text finalScoreText;
 
     private int score = 0;
     private int highScore = 0;
@@ -38,6 +39,13 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Last Score Saved: " + lastHighScore);
     }
     
+    public void ShowFinalScore()
+    {
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = GetCurrentScore().ToString();
+        }
+    }
     public int GetCurrentScore()
     {
         return score;
