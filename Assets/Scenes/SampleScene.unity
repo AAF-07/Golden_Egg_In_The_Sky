@@ -964,7 +964,7 @@ MonoBehaviour:
   - {fileID: 2448278292819812276, guid: 43b7f069f0207fd4f896fb2f4396292f, type: 3}
   - {fileID: 2448278292819812276, guid: fa481e6a8f776d4468f2253d323df634, type: 3}
   - {fileID: 6160684030593182326, guid: dcb8b7df587d2ec4092ca78daa1391ee, type: 3}
-  - {fileID: 6160684030593182326, guid: a9c3433c92f86e8478e62709ec86009b, type: 3}
+  - {fileID: 521687763307831813, guid: a9c3433c92f86e8478e62709ec86009b, type: 3}
   platformcount: 1000
 --- !u!1 &1404456900
 GameObject:
@@ -1656,7 +1656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -60, y: 166.5}
+  m_AnchoredPosition: {x: -64, y: 447.84}
   m_SizeDelta: {x: 90, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848145768
