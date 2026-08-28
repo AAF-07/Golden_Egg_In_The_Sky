@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseui: {fileID: 1404456900}
-  pauseui: {fileID: 0}
+  pauseui: {fileID: 586268189}
   confirmPanel: {fileID: 1586147652}
 --- !u!4 &1918706179
 Transform:
