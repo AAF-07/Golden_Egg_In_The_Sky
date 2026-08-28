@@ -5,7 +5,6 @@ using UnityEngine;
 public class voidd : MonoBehaviour
 {
     public GameObject loseui;
-    public bool gameover = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +21,7 @@ public class voidd : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            loseui.SetActive(true);
-            Time.timeScale = 0f;
-            gameover = true;
+            GameManager.Instance.GameOver();
         }
     }
 }

@@ -6,7 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static bool gameover = false;
     public GameObject loseui;
+    public static GameManager Instance { get; private set; }
     // Start is called before the first frame update
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         

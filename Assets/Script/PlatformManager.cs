@@ -37,6 +37,7 @@ public class PlatformManager : MonoBehaviour
             }
             StartCoroutine(waitforseconds(1f));
         }
+
     }
     private IEnumerator waitforseconds(float v)
     {
