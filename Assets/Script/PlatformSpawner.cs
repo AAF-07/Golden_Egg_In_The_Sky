@@ -23,8 +23,8 @@ public class PlatformSpawner : MonoBehaviour
                 PlatformToSpawn = platformPrefab[Random.Range(2, 4)];
             }
 
-            spawnPosition.y += Random.Range(2f, 2.5f);
-            spawnPosition.x = Random.Range(-3f, 3f);
+            spawnPosition.y += 2f;
+            spawnPosition.x = Random.Range(-4f, 5f);
             Instantiate(PlatformToSpawn, spawnPosition, Quaternion.identity);
         }
     }

@@ -16,7 +16,6 @@ public class ScoreManager : MonoBehaviour
     private int lastHighScore = 0;
     private bool newHighScore = false;  
 
-
     public void AddScore(int amount)
     {
         score += amount;
@@ -45,7 +44,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (finalScoreText != null)
         {
-            
+
             finalScoreText.text = GetCurrentScore().ToString();
         }
     }
