@@ -28,6 +28,11 @@ public class ObstacleSpawn : MonoBehaviour
         {
             camerafollow = Camera.main != null ? Camera.main.transform : null;
         }
+
+        if (scoreManager == null)
+        {
+            scoreManager = FindObjectOfType<ScoreManager>();
+        }
         StartCoroutine(SpawnRoutine());
     }
 
@@ -86,7 +91,7 @@ public class ObstacleSpawn : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OntriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
