@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject confirmPanel;
    public void PlayGame()
     {
         SceneManager.LoadScene("SampleScene");
@@ -13,8 +14,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-      Debug.Log("Player has Exit Game");
-        Application.Quit();
+        confirmPanel.SetActive(true);
     }
 
     public void QuitToMenu()
@@ -23,6 +23,21 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void ExitGame()
+    {
+        Debug.Log("Player has Exit Game");
+        Application.Quit();
+    }
+
+    public void Cancel()
+    {
+        confirmPanel.SetActive(false);
+    }
+
+    void Start()
+    {
+        confirmPanel.SetActive(false);
+    }
     
     void Update()
     {
