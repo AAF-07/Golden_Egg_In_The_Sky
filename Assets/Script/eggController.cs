@@ -8,8 +8,8 @@ public class eggController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            AudioManager.Instance.playcollect();
             FindAnyObjectByType<ScoreManager>().AddScore(10);
+            AudioManager.Instance.playcollect();
             Destroy(gameObject);
             Debug.Log("player hit egg");
         }
