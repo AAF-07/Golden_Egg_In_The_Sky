@@ -30,6 +30,7 @@ public class PlatformManager : MonoBehaviour
                 Vector2 velocity = rb.velocity;
                 velocity.y = jumpforce;
                 rb.velocity = velocity;
+                AudioManager.Instance.playjump();
             }
 
             

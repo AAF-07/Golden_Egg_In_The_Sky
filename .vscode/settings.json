@@ -56,6 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Golden_Egg_In_The_Sky.sln",
+    "dotnet.defaultSolution": "testing.sln",
     "dotnet.debug.suppressInvalidDebugTypeWarning": true
 }

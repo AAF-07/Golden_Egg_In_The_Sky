@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8701400924305422429}
   - component: {fileID: 8770023529002250051}
   - component: {fileID: 7636560340401006169}
-  - component: {fileID: 691459506373737862}
+  - component: {fileID: 5920032957742026037}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!114 &691459506373737862
+--- !u!114 &5920032957742026037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,3 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f1dfee73e9932419cc906ffa60a52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 4567188881563905552, guid: 02d8be30dea19c54788737b5fb9c59dc, type: 3}

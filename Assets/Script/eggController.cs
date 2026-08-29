@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class eggController : MonoBehaviour
 {
-    public AudioSource collect;
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            collect.Play();
+            AudioManager.Instance.playcollect();
             FindAnyObjectByType<ScoreManager>().AddScore(10);
             Destroy(gameObject);
             Debug.Log("player hit egg");
