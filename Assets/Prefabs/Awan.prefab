@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpforce: 10
   platformstay: 0
-  speed: 5
+  jump: {fileID: 645814699558284441, guid: 2134eabc250f71047be1a8c4611e4a15, type: 3}
 --- !u!61 &8183342757325465995
 BoxCollider2D:
   m_ObjectHideFlags: 0

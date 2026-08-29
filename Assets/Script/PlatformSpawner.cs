@@ -9,6 +9,7 @@ public class PlatformSpawner : MonoBehaviour
     public float Xdistance = 3.5f;
     public float minPosX = -3.5f;
     public float maxPosX = 3.5f;
+    public AudioSource jump;
 
     void Start()
     {

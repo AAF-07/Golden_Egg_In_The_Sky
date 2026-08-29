@@ -8,6 +8,7 @@ public class PlatformManager : MonoBehaviour
 
     private Renderer platformrenderer;
 
+
     void Start()
     {
         platformrenderer = GetComponent<Renderer>();
