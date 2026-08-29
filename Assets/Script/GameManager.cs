@@ -6,11 +6,18 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static bool gameover = false;
+
     public GameObject loseui;
     public GameObject pauseui;
     public GameObject confirmPanel;
+
     public static GameManager Instance { get; private set; }
-    // Start is called before the first frame update
+    private bool confirmFromGameOver = false;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -37,58 +44,92 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (gameover) return;
+            if (gameover)
+                return;
+
             if (confirmPanel != null && confirmPanel.activeSelf)
             {
                 CloseConfirmPanel();
                 return;
             }
 
-            if (!gameover)
-            {
-                TogglePause();
-            }
+            TogglePause();
         }
-    }
-
-    private void Awake()
-    {
-        Instance = this;
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1f;
         gameover = false;
+
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Main Menu");
         Time.timeScale = 1f;
         gameover = false;
+
+        SceneManager.LoadScene("Main Menu");
     }
+
     public void GameOver()
     {
         gameover = true;
-        loseui.SetActive(true);
-        Time.timeScale = 0f;
-    }
-    public void TogglePause()
-    {
-        bool isPaused = !pauseui.activeSelf;
-        pauseui.SetActive(isPaused);
+
+        if (loseui != null)
+        {
+            loseui.SetActive(true);
+        }
+
+        if (pauseui != null)
+        {
+            pauseui.SetActive(false);
+        }
 
         if (confirmPanel != null)
         {
             confirmPanel.SetActive(false);
         }
+
+        Time.timeScale = 0f;
+    }
+
+    public void TogglePause()
+    {
+        if (gameover)
+            return;
+
+        bool isPaused = !pauseui.activeSelf;
+
+        if (pauseui != null)
+        {
+            pauseui.SetActive(isPaused);
+        }
+
+        if (confirmPanel != null)
+        {
+            confirmPanel.SetActive(false);
+        }
+
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
     public void OpenConfirmPanel()
     {
+      
+        confirmFromGameOver = gameover;
+
+        if (pauseui != null)
+        {
+            pauseui.SetActive(false);
+        }
+
+        if (loseui != null)
+        {
+            loseui.SetActive(false);
+        }
+
         if (confirmPanel != null)
         {
             confirmPanel.SetActive(true);
@@ -100,6 +141,31 @@ public class GameManager : MonoBehaviour
         if (confirmPanel != null)
         {
             confirmPanel.SetActive(false);
+        }
+
+        if (confirmFromGameOver)
+        {
+            if (loseui != null)
+            {
+                loseui.SetActive(true);
+            }
+
+            if (pauseui != null)
+            {
+                pauseui.SetActive(false);
+            }
+        }
+        else
+        {
+            if (pauseui != null)
+            {
+                pauseui.SetActive(true);
+            }
+
+            if (loseui != null)
+            {
+                loseui.SetActive(false);
+            }
         }
     }
 
