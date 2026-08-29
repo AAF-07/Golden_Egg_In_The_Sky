@@ -1,53 +1,76 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
 {
     public float jumpforce = 10f;
     public bool platformstay = true;
-    public float speed = 1f;
 
-    public void OntriggerEnter2D(Collider2D collision)
+    private Renderer platformrenderer;
+
+    void Start()
     {
-        if(!collision.gameObject.CompareTag("Player"))
+        platformrenderer = GetComponent<Renderer>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player"))
         {
             return;
         }
-    }
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.relativeVelocity.y <= 0f && platformstay == true)
+
+        if (collision.relativeVelocity.y <= 0f)
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+
             if (rb != null)
             {
                 Vector2 velocity = rb.velocity;
                 velocity.y = jumpforce;
                 rb.velocity = velocity;
             }
-        }else if(collision.relativeVelocity.y <= 0f && platformstay == false)
-        {
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
+
+            
+            if (!platformstay)
             {
-                Vector2 velocity = rb.velocity;
-                velocity.y = jumpforce;
-                rb.velocity = velocity;
+                StartCoroutine(FadeAndDestroy());
             }
-            StartCoroutine(waitforseconds(1f));
         }
-
-    }
-    private IEnumerator waitforseconds(float v)
-    {
-        yield return new WaitForSeconds(v);
-        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator FadeAndDestroy()
     {
         
+        yield return new WaitForSeconds(0.5f);
+
+        float startAlpha = platformrenderer.material.color.a;
+        float targetAlpha = 0f;
+        float duration = 0.1f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            float newAlpha = Mathf.Lerp(
+                startAlpha,
+                targetAlpha,
+                elapsedTime / duration
+            );
+
+            Color newColor = platformrenderer.material.color;
+            newColor.a = newAlpha;
+            platformrenderer.material.color = newColor;
+
+            yield return null;
+        }
+
+       
+        Color finalColor = platformrenderer.material.color;
+        finalColor.a = 0f;
+        platformrenderer.material.color = finalColor;
+
+        Destroy(gameObject);
     }
 }
